@@ -6,36 +6,6 @@ A complete NLP pipeline for the analysis of Amazon US customer reviews through i
 Introduction
 
 There is an immense number of unstructured product reviews on online marketplaces, but raw review data has two challenges – some of the reviews are not real and even those that are real do not provide insight into why customers feel that way. This project creates a pipeline that helps to filter fake reviews, classify sentiment through three different models, determine what topics the customers are actually talking about, and assign a score to a review based on its information quality, all within the constraints of the 12 GB memory limit of Google Colab’s free tier.
-Raw Reviews (6.9M rows, Kaggle)
-        |
-        v
-Reservoir Sampling (200,000 rows, seed=42)
-        |
-        v
-Fake Review Filter (7 weighted signals)
-        |
-        v
-Clean Reviews  --->  Feature Engineering (18 engineered features)
-        |
-        +--------------+--------------+
-        v              v              v
-Logistic Regression  Random Forest  DistilBERT
-        |              |              |
-        +--------------+--------------+
-                       |
-                       v
-        Topic Modelling (LDA + BERTopic)
-                       |
-        +--------------+--------------+
-        v                             v
-Review Quality Scoring          Model Fine-Tuning
-        |                             |
-        +--------------+--------------+
-                       v
-              Business Insights Dashboard
-
-
-Amazon US Customer Reviews dataset (Kaggle) - around 6.9 million reviews. A reservoir sample of 200,000 rows (seed fixed) is used throughout the modelling process as a representative sample, considering the memory limitation of Google Colab.
 
 Methodology
 
